@@ -62,7 +62,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     function enterRaffle() public payable {
         // For deploy (and runtime) gas saving, use https://blog.soliditylang.org/2021/04/21/custom-errors/
-        require(msg.value > i_entranceFee, "Not enough ETH!");
+        require(msg.value >= i_entranceFee, "Not enough ETH!");
         require(s_raffleState == RaffleState.OPEN, "Raffle not open!");
         s_players.push(payable(msg.sender));
         // Emit an event when we update a dynamic array or mapping
@@ -154,5 +154,9 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     function getRequestConfirmations() public pure returns(uint256) {
         return REQUEST_CONFIRMATIONS;
+    }
+
+    function getInterval() public view returns(uint256) {
+        return i_interval;
     }
  }
