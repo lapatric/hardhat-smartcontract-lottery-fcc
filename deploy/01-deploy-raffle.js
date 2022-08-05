@@ -38,7 +38,7 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     // To fix InvalidConsumer() error in VRFCoordinatorV2Mock.sol when calling requestRandomWords
     // we must add the caller (the raffle contract) to the list of consumers under our subscription ID.
     // We (deployer) call performUpkeep in raffle contract but inside performUpkeep raffle contract calls 
-    // requestRandomWords from vrfCoordinatorV2 interface.
+    // requestRandomWords from vrfCoordinatorV2 interface
     await vrfCoordinatorV2Mock.addConsumer(subscriptionId.toNumber(), raffle.address);
 
     if(!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY){
