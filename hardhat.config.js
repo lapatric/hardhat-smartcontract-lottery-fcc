@@ -23,7 +23,14 @@ module.exports = {
       blockConfirmations: 6,
       url: RINKEBY_RPC_URL,
       accounts: [PRIVATE_KEY],
+      saveDeployments: 6,
     }
+  },
+  etherscan: {
+    // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+    apiKey: {
+        rinkeby: ETHERSCAN_API_KEY,
+    },
   },
   gasReporter: { // print gas output when running tests
     enabled: false,
@@ -45,5 +52,4 @@ module.exports = {
   mocha: {
     timeout: 300000, // timeout on test afer 300ms
   }
-
 };

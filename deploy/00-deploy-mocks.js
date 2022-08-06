@@ -19,10 +19,10 @@ module.exports = async ({getNamedAccounts, deployments}) => {
             args: args,
             waitConfirmations: network.config.blockConfirmations || 1,
         });
+        
+        log("Mocks Deployed!");
+        log("-------------------------------------------------------------------");
     }
-    
-    log("Mocks Deployed!");
-    log("-------------------------------------------------------------------");
 }
 
 module.exports.tags = ["all", "mocks"];
